@@ -16,7 +16,7 @@ app.get('/',(req,res)=> {
 
 
 
-const port = 3001;
+const port = 3000;
 app.listen(port, () => {
     console.log("Server started at port "+port)
     console.log("http://localhost:"+port)
