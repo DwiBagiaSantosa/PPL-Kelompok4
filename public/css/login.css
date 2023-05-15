@@ -42,3 +42,29 @@ body{
   border-radius: 10px;
   border: 1px solid #000000;
 }
+
+.forgot-password {
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.7);
+  float: right;
+}
+
+.btn.btn-primary {
+  margin-top: 10px;
+  font-size: 15px;
+  width: 250px;
+  height: 35px;
+  left: 562px;
+  top: 598px;
+  background: #198754;
+  border-radius: 10px;
+}
+
+.signup-text{
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.7);
+  
+}
