@@ -1,3 +1,7 @@
+body{
+    background-color: #F6E8E6;
+}
+
 .bg-orange {
     background-color: #F16852;
 }
@@ -70,5 +74,32 @@
 .content {
     margin-left: 240px; 
     padding: 20px;
-    
+}
+
+.container{
+    margin-top: 70px;
+    display: grid;
+    place-items: center;
+}
+
+.box{
+    width: 308px;
+    border: 1px solid #C0C0C0;
+    border-radius: 10px;
+}
+
+.bg-custom-box{
+    background: #FFFEFE;
+}
+
+.text-p .logo-sidebar{
+    margin-right: 25px;
+}
+
+.admin-data {
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 27px;
+    text-align: center;
+
 }
