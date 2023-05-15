@@ -21,16 +21,17 @@ body{
   height: 100%;
 }
 .text-center{
+  
   font-family: 'Bebas Neue';
   font-style: normal;
-  font-weight: 400;
-  font-size: 35px;
-  line-height: 77px;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 50px;
   text-align: center;
-  letter-spacing: 0.165em;
+  letter-spacing: 0.150em;
   text-transform: uppercase;
   color: #F16852;
-  justify-content: center;
+  margin-top: 30px;
 }
 
 .form-control {
@@ -39,7 +40,7 @@ body{
   height: 35px;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 10px;
+  border-radius: 8px;
   border: 1px solid #000000;
 }
 
@@ -66,5 +67,4 @@ body{
   margin-top: 10px;
   font-size: 15px;
   color: rgba(0, 0, 0, 0.7);
-  
 }
