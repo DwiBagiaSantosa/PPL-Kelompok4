@@ -13,6 +13,9 @@ app.get('/',(req,res)=> {
     res.render('admin/login');
 })
 
+app.get('/dashboard',(req,res)=> {
+    res.render('admin/dashboard_admin');
+})
 
 
 
