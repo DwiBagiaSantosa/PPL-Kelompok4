@@ -79,9 +79,46 @@ body{
 .custom-table {
     font-size: 0.8rem;
     table-layout: fixed; 
-      width: 50%;
+    width: 50%;
+    margin-top: 50px;
+    border-collapse: collapse;
   }
+  
+.custom-table td,
+.custom-table th {
+    border: none;
+    }
 
-  .custom-table td
-    .custom-table th {
-      border: none;}
+.table-light{
+    border-radius: 5px;
+}
+
+.btn-available{
+    width: 100px;
+    height: 20px;
+    background-color: #198754;
+    border-radius: 35px;
+    font-size : 15px;
+    line-height: 7px;
+    color: white;
+}
+
+.btn-unavailable{
+    width: 100px;
+    height: 20px;
+    background-color: #F8022E;
+    border-radius: 35px;
+    font-size : 15px;
+    line-height: 7px;
+    color: white;
+}
+
+.btn-borrow{
+    width: 100px;
+    height: 20px;
+    background-color: #F0CC0C;
+    border-radius: 35px;
+    font-size : 15px;
+    line-height: 7px;
+    color: white;
+}
