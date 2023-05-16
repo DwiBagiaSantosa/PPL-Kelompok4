@@ -17,6 +17,15 @@ app.get('/dashboard',(req,res)=> {
     res.render('admin/dashboard_admin');
 })
 
+app.get('/user',(req,res)=> {
+    res.render('user/dashboard_user');
+})
+
+app.get('/items',(req,res)=> {
+    res.render('user/items');
+})
+
+
 
 
 const port = 3001;

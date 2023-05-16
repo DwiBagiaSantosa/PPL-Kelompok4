@@ -1,0 +1,87 @@
+body{
+    background-color: #F6E8E6;
+}
+
+.bg-orange {
+    background-color: #F16852;
+}
+
+.navbar-brand {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 33px;
+
+    color: #000000;
+}
+
+.btn{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 22px;
+    color: #000000;
+    margin-top: -2px; 
+
+}
+
+.custom-btn {
+    background-color: #D9D9D9;
+    height: 25px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+
+.logo{
+    margin-right: 10px;
+    width: 25px; 
+    height: auto;
+}
+
+.sidebar {
+    position: fixed;
+    top: 56px; /* Tinggi navbar */
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    padding: 48px 20px;
+    background-color: #F16852;
+  }
+
+.nav-link{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 250;
+    font-size: 18px;
+    line-height: 27px;
+    color: #FFF9F9;
+
+}
+
+.nav-link .logo-sidebar {
+    margin-right: 25px;
+}
+
+.logo-sidebar {
+    width: 20px; 
+    height: auto;
+}
+
+.content {
+    margin-left: 240px; 
+    padding: 20px;
+}
+
+.custom-table {
+    font-size: 0.8rem;
+    table-layout: fixed; 
+      width: 50%;
+  }
+
+  .custom-table td
+    .custom-table th {
+      border: none;}
