@@ -29,6 +29,9 @@ app.get('/transaction',(req,res)=> {
     res.render('user/transaction');
 })
 
+app.get('/history',(req,res)=> {
+    res.render('user/history');
+})
 
 
 
