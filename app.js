@@ -25,6 +25,11 @@ app.get('/items',(req,res)=> {
     res.render('user/items');
 })
 
+app.get('/transaction',(req,res)=> {
+    res.render('user/transaction');
+})
+
+
 
 
 

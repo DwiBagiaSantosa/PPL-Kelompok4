@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>dashboard admin</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/transaction.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-orange">
+        <a class="navbar-brand" href="#">FABBIS Inventory</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto align-items-center">
+                <li class="nav-item">
+                    <img src="/images/Group 1.png" alt="Logo" class="logo">
+                </li>
+                <li class="nav-item">
+                    <div class="logout">
+                        <button type="submit" class="btn custom-btn">
+                            <img src="/images/material-symbols_logout.png" alt="Logo" class="logo">Logout
+                        </button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+ 
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-3 col-lg-2 sidebar">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" href="#"><img src="/images/Dashboard.png" alt="Logo" class="logo-sidebar">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><img src="/images/Item.png" alt="Logo" class="logo-sidebar">Item</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><img src="/images/History.png" alt="Logo" class="logo-sidebar">History</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><img src="/images/Transaction.png" alt="Logo" class="logo-sidebar">Transaction</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-9 col-lg-10 content">
+            <h3><strong>Transaction </strong></h3>
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                      <ul class="navbar-nav">
+                        <li class="nav-item active">
+                          <a class="nav-link nav-items" href="#">Items(s) Selected</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </nav>
+                  <table class="table table-borderless custom-table mx-auto">
+                    <thead>
+                      <tr>
+                        <th scope="col">Item(s) ID</th>
+                        <th scope="col">Item Name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Availability</th>
+                        <th scope="col">Borrow Date</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">#0001</th>
+                        <td>Shoes</td>
+                        <td>2</td>
+                        <td>10</td>
+                        <td>02-03-2023</td>
+                        <td>Row 1, Column 4</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">#0002</th>
+                        <td>Jersey</td>
+                        <td>1</td>
+                        <td>9</td>
+                        <td>06-03-2023</td>
+                        <td>Row 1, Column 4</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">#0003</th>
+                        <td>Foul Flag</td>
+                        <td>3</td>
+                        <td>12</td>
+                        <td>04-03-2023</td>
+                        <td>Row 1, Column 4</td>
+                      </tr>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="text-right">
+                    <button class="btn btn-cancel">Cancel</button>
+                    <button class="btn btn-proceed">Proceed</button>
+                  </div>
+          </div>
+        </div>
+      </div>
+    
+    
+</body>
+
+</html>
