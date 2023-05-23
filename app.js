@@ -33,6 +33,10 @@ app.get('/history',(req,res)=> {
     res.render('user/history');
 })
 
+app.get('/logout',(req,res)=> {
+	res.redirect('/');
+})
+
 
 
 
