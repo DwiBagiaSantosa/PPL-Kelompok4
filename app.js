@@ -80,12 +80,34 @@ app.get('/items',(req,res)=> {
     
 })
 
+app.post('/add/cart', (req, res) => {
+    if(req.session.loggedin) {
+        const data = req.body
+        connection.query(`INSERT INTO transaction(items_id) values('${data.items_id}')`, (err, results, fields) => {
+            if(err) throw err;
+            res.redirect('/dashboard');
+        })
+    } else {
+        res.redirect('/')
+    }
+})
+
 app.get('/transaction',(req,res)=> {
     res.render('user/transaction');
 })
 
 app.get('/history',(req,res)=> {
-    res.render('user/history');
+    if(req.session.admin) {
+        connection.query('SELECT transaction.id, shelf_name, name, qty, img, status from items LEFT JOIN shelves ON items.shelf_id = shelves.id GROUP BY items.id', function (error, results, fields) {
+          if (error) throw error;
+          res.render('admin/items/manage', {
+            items: results
+          })
+        });
+      } else {
+        res.redirect("/")
+      }  
+    // res.render('user/history');
 })
 
 app.get('/logout',(req,res)=> {

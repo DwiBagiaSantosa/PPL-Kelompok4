@@ -65,13 +65,16 @@
                   </thead>
                   <% dtd.forEach((data) => { %>
                   <tbody>
-                    <tr>
-                      <th scope="row"><%=data.id %></th>
-                      <td><%=data.nama %></td>
-                      <td><%=data.quantity %></td>
-                      <td><button class="btn btn-available">Available</button></td>
-                      <td><button class="btn btn-borrow">Borrow</button></td>
-                    </tr>
+                    <form action="/add/cart" method="POST">
+                      <tr>
+                        <th scope="row"><input id="items_id" name="items_id" type="text" value="<%=data.id %>" style="background-color: white; border: none;" disabled></th>
+                        <td><input id="nama" name="nama" type="text" value="<%=data.nama %>" style="background-color: white; border: none;" disabled></td>
+                        <td><input id="quantity" name="quantity" type="text" value="<%=data.quantity%>" style="background-color: white; border: none;" disabled></td>
+                        <td><button type="submit" class="btn btn-available">Available</button></td>
+                        <td><button class="btn btn-borrow">Borrow</button></td>
+                      </tr>
+                    </form>
+                    
                     <!-- <tr>
                       <th scope="row">#0002</th>
                       <td>Jersey</td>
