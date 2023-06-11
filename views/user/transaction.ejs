@@ -76,31 +76,16 @@
                       </tr>
                     </thead>
                     <tbody>
+                      <% dtd.forEach((data) => { %>
                       <tr>
-                        <th scope="row">#0001</th>
-                        <td>Shoes</td>
-                        <td>2</td>
-                        <td>10</td>
-                        <td>02-03-2023</td>
-                        <td>Row 1, Column 4</td>
+                        <th scope="row"><%=data.id %></th>
+                        <td><%=data.nama %></td>
+                        <td><%=data.qty %></td>
+                        <td><%=data.quantity %></td>
+                        <td><%=data.date %></td>
+                        <td><a href="#">EDIT</a> | <a href="#">DELETE</a></td>
                       </tr>
-                      <tr>
-                        <th scope="row">#0002</th>
-                        <td>Jersey</td>
-                        <td>1</td>
-                        <td>9</td>
-                        <td>06-03-2023</td>
-                        <td>Row 1, Column 4</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">#0003</th>
-                        <td>Foul Flag</td>
-                        <td>3</td>
-                        <td>12</td>
-                        <td>04-03-2023</td>
-                        <td>Row 1, Column 4</td>
-                      </tr>
-                      </tr>
+                      <% }); %>
                     </tbody>
                   </table>
                   <div class="text-right">

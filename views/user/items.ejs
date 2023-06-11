@@ -1,124 +1,202 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>dashboard admin</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/items.css">
-</head>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/css/items.css" />
+  </head>
 
-<body>
+  <body>
     <nav class="navbar navbar-expand-lg bg-orange">
-        <a class="navbar-brand" href="#">FABBIS Inventory</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto align-items-center">
-                <li class="nav-item">
-                    <img src="/images/Group 1.png" alt="Logo" class="logo">
-                </li>
-                <li class="nav-item">
-                    <div class="logout">
-                        <!-- <button type="submit" class="btn custom-btn">
+      <a class="navbar-brand" href="#">FABBIS Inventory</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto align-items-center">
+          <li class="nav-item">
+            <img src="/images/Group 1.png" alt="Logo" class="logo" />
+          </li>
+          <li class="nav-item">
+            <div class="logout">
+              <!-- <button type="submit" class="btn custom-btn">
                             <img src="/images/material-symbols_logout.png" alt="Logo" class="logo">Logout
                         </button> -->
-                        <a href="/logout" class="btn custom-btn">Logout</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
+              <a href="/logout" class="btn custom-btn">Logout</a>
+            </div>
+          </li>
+        </ul>
+      </div>
     </nav>
 
- 
     <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-3 col-lg-2 sidebar">
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a class="nav-link" href="/user"><img src="/images/Dashboard.png" alt="Logo" class="logo-sidebar">Dashboard</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/items"><img src="/images/Item.png" alt="Logo" class="logo-sidebar">Item</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/history"><img src="/images/History.png" alt="Logo" class="logo-sidebar">History</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/transaction"><img src="/images/Transaction.png" alt="Logo" class="logo-sidebar">Transaction</a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-9 col-lg-10 content">
-            <h3><strong>Items List </strong></h3>
-            <div class="container">
-                <table class="table table-sm table-borderless custom-table  mx-auto ">
-                  <thead>
-                    <tr>
-                      <th scope="col">Items ID</th>
-                      <th scope="col">Name</th>
-                      <th scope="col">Quantity</th>
-                      <th scope="col">Status</th>
-                      <th scope="col">Action</th>
-                    </tr>
-                  </thead>
-                  <% dtd.forEach((data) => { %>
-                  <tbody>
-                    <form action="/add/cart" method="POST">
-                      <tr>
-                        <th scope="row"><input id="items_id" name="items_id" type="text" value="<%=data.id %>" style="background-color: white; border: none;" disabled></th>
-                        <td><input id="nama" name="nama" type="text" value="<%=data.nama %>" style="background-color: white; border: none;" disabled></td>
-                        <td><input id="quantity" name="quantity" type="text" value="<%=data.quantity%>" style="background-color: white; border: none;" disabled></td>
-                        <td><button type="submit" class="btn btn-available">Available</button></td>
-                        <td><button class="btn btn-borrow">Borrow</button></td>
-                      </tr>
-                    </form>
-                    
-                    <!-- <tr>
-                      <th scope="row">#0002</th>
-                      <td>Jersey</td>
-                      <td>24</td>
-                      <td><button class="btn btn-available">Available</button></td>
-                      <td><button class="btn btn-borrow">Borrow</button></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">#0003</th>
-                      <td>Foul Flag</td>
-                      <td>6</td>
-                      <td><button class="btn btn-available">Available</button></td>
-                      <td><button class="btn btn-borrow">Borrow</button></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">#0004</th>
-                      <td>Ball</td>
-                      <td>15</td>
-                      <td><button class="btn btn-available">Available</button></td>
-                      <td><button class="btn btn-borrow">Borrow</button></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">#0005</th>
-                      <td>Whistle</td>
-                      <td>0</td>
-                      <td><button class="btn btn-unavailable">Unavailable</button></td>
-                      <td><button class="btn btn-borrow">Borrow</button></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">#0006</th>
-                      <td>Scoreboard</td>
-                      <td>0</td>
-                      <td><button class="btn btn-unavailable">Unavailable</button></td>
-                      <td><button class="btn btn-borrow">Borrow</button></td>
-                    </tr> -->
-                    <% }); %>
-                  </tbody>
-                </table>
+      <div class="row">
+        <div class="col-md-3 col-lg-2 sidebar">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="/user"
+                ><img
+                  src="/images/Dashboard.png"
+                  alt="Logo"
+                  class="logo-sidebar"
+                />Dashboard</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/items"
+                ><img
+                  src="/images/Item.png"
+                  alt="Logo"
+                  class="logo-sidebar"
+                />Item</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/history"
+                ><img
+                  src="/images/History.png"
+                  alt="Logo"
+                  class="logo-sidebar"
+                />History</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/transaction"
+                ><img
+                  src="/images/Transaction.png"
+                  alt="Logo"
+                  class="logo-sidebar"
+                />Transaction</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-9 col-lg-10 content">
+          <h3><strong>Items List </strong></h3>
+          <div class="container">
+            <!-- <div class="table">
+              <div class="table-row">
+                <div class="table-cell">Items ID</div>
+                <div class="table-cell">Name</div>
+                <div class="table-cell">Quantity</div>
+                <div class="table-cell">Status</div>
+                <div class="table-cell">Action</div>
               </div>
+              <% dtd.forEach((data) => { %>
+              <form action="/add/cart" method="POST">
+                <div class="table-row">
+                  <div class="table-cell">
+                    <%=data.id%>
+                    <input
+                      id="items_id"
+                      name="items_id"
+                      type="hidden"
+                      value="<%=data.id %>"
+                      style="background-color: white; border: none"
+                    />
+                  </div>
+                  <div class="table-cell">
+                    <%=data.nama%>
+                    <input
+                      id="nama"
+                      name="nama"
+                      type="hidden"
+                      value="<%=data.nama %>"
+                      style="background-color: white; border: none"
+                    />
+                  </div>
+                  <div class="table-cell">
+                    <%=data.quantity%>
+                    <input
+                      id="quantity"
+                      name="quantity"
+                      type="hidden"
+                      value="<%=data.quantity%>"
+                      style="background-color: white; border: none"
+                    />
+                  </div>
+                  <div class="table-cell">
+                    <a class="btn btn-available">Available</a>
+                  </div>
+                  <div class="table-cell">
+                    <button type="submit" class="btn btn-borrow">Borrow</button>
+                  </div>
+                </div>
+              </form>
+              <% }); %>
+            </div> -->
+
+            <table class="table table-sm table-borderless custom-table mx-auto">
+              <thead>
+                <tr>
+                  <th scope="col">Items ID</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <% dtd.forEach((data) => { %>
+              <tbody>
+                <form action="/add/cart" method="POST">
+                  <tr>
+                    <th scope="row">
+                      <%=data.id %>
+                      <input
+                        id="items_id"
+                        name="items_id"
+                        type="hidden"
+                        value="<%=data.id %>"
+                        style="background-color: white; border: none"
+                      />
+                    </th>
+                    <td>
+                      <%=data.nama %>
+                      <input
+                        id="nama"
+                        name="nama"
+                        type="hidden"
+                        value="<%=data.nama %>"
+                        style="background-color: white; border: none"
+                      />
+                    </td>
+                    <td>
+                      <%=data.quantity%>
+                      <input
+                        id="quantity"
+                        name="quantity"
+                        type="hidden"
+                        value="<%=data.quantity%>"
+                        style="background-color: white; border: none"
+                      />
+                    </td>
+                    <td>
+                      <a class="btn btn-available">Available</a>
+                    </td>
+                    <td>
+                      <button type="submit" class="btn btn-borrow">
+                        Borrow
+                      </button>
+                    </td>
+                  </tr>
+                </form>
+                <% }); %>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
-    
-    
-</body>
-
+    </div>
+  </body>
 </html>
