@@ -11,6 +11,7 @@ const connection = mysql.createConnection({
   database: "fabbis",
 });
 
+
 connection.connect(function (err) {
   if (err) {
     console.log("Cannot connect to mysql...");
@@ -122,20 +123,20 @@ app.get("/transaction", (req, res) => {
 });
 
 app.get("/history", (req, res) => {
-  if (req.session.loggedin) {
-    connection.query(
-      "SELECT transaction.id, shelf_name, name, qty, img, status from items LEFT JOIN shelves ON items.shelf_id = shelves.id GROUP BY items.id",
-      function (error, results, fields) {
-        if (error) throw error;
-        res.render("admin/items/manage", {
-          items: results,
-        });
-      }
-    );
-  } else {
-    res.redirect("/");
-  }
-  // res.render('user/history');
+//   if (req.session.loggedin) {
+//     connection.query(
+//       "SELECT transaction.id, shelf_name, name, qty, img, status from items LEFT JOIN shelves ON items.shelf_id = shelves.id GROUP BY items.id",
+//       function (error, results, fields) {
+//         if (error) throw error;
+//         res.render("admin/items/manage", {
+//           items: results,
+//         });
+//       }
+//     );
+//   } else {
+    // res.redirect("/");
+//   }
+  res.render('user/history');
 });
 
 app.get("/logout", (req, res) => {
