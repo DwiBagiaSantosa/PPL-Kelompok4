@@ -52,16 +52,30 @@ body {
 }
 
 .nav-link {
-  font-family: "Monospace";
+  font-family: 'sans-serif', Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 250;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 27px;
-  color: #fff9f9;
+  color: #F6E8E6;
+}
+
+.nav-link:hover{
+  background-color: rgb(247, 244, 244);
+  border-radius: 25px;
+}
+
+/* Menambahkan gaya responsif menggunakan media queries */
+@media (max-width: 768px) {
+  .nav-link {
+    width: 150px;
+    height: 150px;
+  }
 }
 
 .nav-link .logo-sidebar {
   margin-right: 25px;
+  cursor: pointer;
 }
 
 .logo-sidebar {
