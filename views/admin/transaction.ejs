@@ -84,14 +84,20 @@
                         <td><%=data.nama %></td>
                         <td><%=data.username %></td>
                         <td><%=data.qty %></td>
-                        <td><%=data.date %></td>  
-                        <td><%=data.date2 %></td>
-                        <td><span class="btn btn-success btn-sm rounded-pill text-white"><%=data.status %></span></td>
+                        <td><%=data.borrowedDate %></td>  
+                        <td><%=data.returnDate %></td>
+                        <td>
+                          <%if (data.return_date > data.dateNow) { %>
+                            <span class="btn btn-available text-white"><%=data.status %></span>
+                          <% } else {%>
+                            <span class="btn btn-unavailable text-white">Due Date</span>
+                          <% } %>
+                        </td>
                         <form action="/return/<%=data.pinjam_id %>" method="post">
                           <input type="hidden" value="<%=data.quantity %>" name="quantity">
                           <input type="hidden" value="<%=data.qty %>" name="qty">
                           <input type="hidden" value="<%=data.items_id %>" name="items_id">
-                          <td><button type="submit" class="btn btn-danger btn-sm rounded-pill text-white">Return</button></td>
+                          <td><button type="submit" class="btn btn-unavailable text-white">Return</button></td>
                         </form>
                       </tr>
                       <% }); %>

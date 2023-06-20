@@ -6,6 +6,7 @@ body{
     background-color: #F16852;
 }
 
+
 .navbar-brand {
     font-family: 'Monospace';
     font-style: normal;
@@ -25,6 +26,26 @@ body{
     color: #000000;
     margin-top: -2px; 
 
+}
+
+.btn-available {
+  width: 100px;
+  height: 20px;
+  background-color: #198754;
+  border-radius: 35px;
+  font-size: 15px;
+  line-height: 7px;
+  color: white;
+}
+
+.btn-unavailable {
+  width: 100px;
+  height: 20px;
+  background-color: #f8022e;
+  border-radius: 35px;
+  font-size: 15px;
+  line-height: 7px;
+  color: white;
 }
 
 .custom-btn {

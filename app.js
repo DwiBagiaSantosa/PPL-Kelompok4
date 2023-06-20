@@ -110,18 +110,19 @@ app.get("/history/user", (req, res) => {
           const year = date.getFullYear();
           const month = String(date.getMonth() + 1).padStart(2, "0");
           const day = String(date.getDate()).padStart(2, "0");
-          const formattedDate = `${year}-${month}-${day}`;
+          const borrowedDate = `${year}-${month}-${day}`;
 
           const date2 = new Date(result.return_date);
           const year2 = date2.getFullYear();
           const month2 = String(date2.getMonth() + 1).padStart(2, "0");
           const day2 = String(date2.getDate()).padStart(2, "0");
-          const formattedDate2 = `${year2}-${month2}-${day2}`;
+          const returnDate = `${year2}-${month2}-${day2}`;
 
           return {
             ...result,
-            date: formattedDate,
-            date2: formattedDate2,
+            borrowedDate: borrowedDate,
+            returnDate: returnDate,
+            dateNow: new Date()
           };
         });
 
@@ -153,18 +154,19 @@ app.get("/borrowed/user", (req, res) => {
           const year = date.getFullYear();
           const month = String(date.getMonth() + 1).padStart(2, "0");
           const day = String(date.getDate()).padStart(2, "0");
-          const formattedDate = `${year}-${month}-${day}`;
+          const borrowedDate = `${year}-${month}-${day}`;
 
           const date2 = new Date(result.return_date);
           const year2 = date2.getFullYear();
           const month2 = String(date2.getMonth() + 1).padStart(2, "0");
           const day2 = String(date2.getDate()).padStart(2, "0");
-          const formattedDate2 = `${year2}-${month2}-${day2}`;
+          const returnDate = `${year2}-${month2}-${day2}`;
 
           return {
             ...result,
-            date: formattedDate,
-            date2: formattedDate2,
+            borrowedDate: borrowedDate,
+            returnDate: returnDate,
+            dateNow: new Date()
           };
         });
 
@@ -305,11 +307,23 @@ app.get("/pinjaman/:id", (req, res) => {
     connection.query(q, (err, results, fields) => {
       if (err) throw err;
       // console.log(results);
+      const date = new Date();
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const day = String(date.getDate()).padStart(2, "0");
+      const day1 = String(date.getDate() + 1).padStart(2, "0");
+      const day7 = String(date.getDate() + 7).padStart(2, "0");
+      const dateNow = `${year}-${month}-${day}`;
+      const datePlus = `${year}-${month}-${day1}`;
+      const dateMax = `${year}-${month}-${day7}`;
       res.render("admin/formpinjam", {
         items_id: req.params.id,
         items: results[0][0]["nama"],
         quantity: results[0][0]["quantity"],
         users: results[1],
+        dateNow : dateNow,
+        datePlus : datePlus,
+        dateMax : dateMax
       });
     });
   }
@@ -347,26 +361,27 @@ app.get("/transaction", (req, res) => {
           const year = date.getFullYear();
           const month = String(date.getMonth() + 1).padStart(2, "0");
           const day = String(date.getDate()).padStart(2, "0");
-          const formattedDate = `${year}-${month}-${day}`;
+          const borrowedDate = `${year}-${month}-${day}`;
 
           const date2 = new Date(result.return_date);
           const year2 = date2.getFullYear();
           const month2 = String(date2.getMonth() + 1).padStart(2, "0");
           const day2 = String(date2.getDate()).padStart(2, "0");
-          const formattedDate2 = `${year2}-${month2}-${day2}`;
+          const returnDate = `${year2}-${month2}-${day2}`;
 
           return {
             ...result,
-            date: formattedDate,
-            date2: formattedDate2,
+            borrowedDate: borrowedDate,
+            returnDate: returnDate,
+            dateNow: new Date()
           };
         });
 
-        // var d = new Date('2015-03-04T00:00:00.000Z');
+        // var d = new Date();
         // console.log(d.getUTCHours()); // Hours
         // console.log(d.getUTCMinutes());
         // console.log(d.getUTCSeconds());
-
+        // console.log(formattedResults)
         res.render("admin/transaction", {
           dtd: formattedResults,
         });
@@ -392,7 +407,7 @@ app.post("/return/:id", (req, res) => {
   if (req.session.isadmin) {
     connection.query(q, (err) => {
       if (err) throw err;
-      res.redirect("/dashboard/admin");
+      res.redirect("/transaction");
     });
   }
 });
@@ -411,18 +426,19 @@ app.get("/history", (req, res) => {
           const year = date.getFullYear();
           const month = String(date.getMonth() + 1).padStart(2, "0");
           const day = String(date.getDate()).padStart(2, "0");
-          const formattedDate = `${year}-${month}-${day}`;
+          const borrowedDate = `${year}-${month}-${day}`;
 
           const date2 = new Date(result.return_date);
           const year2 = date2.getFullYear();
           const month2 = String(date2.getMonth() + 1).padStart(2, "0");
           const day2 = String(date2.getDate()).padStart(2, "0");
-          const formattedDate2 = `${year2}-${month2}-${day2}`;
+          const returnDate = `${year2}-${month2}-${day2}`;
 
           return {
             ...result,
-            date: formattedDate,
-            date2: formattedDate2,
+            borrowedDate: borrowedDate,
+            returnDate: returnDate,
+            dateNow: new Date()
           };
         });
 

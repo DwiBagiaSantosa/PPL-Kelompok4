@@ -150,6 +150,9 @@
                     id="borrow_date"
                     name="borrow_date"
                     placeholder="Borrow Date..."
+                    min="<%=dateNow%>"
+                    max="<%=dateMax%>"
+                    value="<%=dateNow%>"
                   />
                 </div>
                 <div class="mb-3">
@@ -162,6 +165,8 @@
                     id="return_date"
                     name="return_date"
                     placeholder="Return Date..."
+                    min="<%=datePlus%>"
+                    value="<%=datePlus%>"
                   />
                 </div>
                 <button class="btn btn-primary text-white">Borrow</button>
