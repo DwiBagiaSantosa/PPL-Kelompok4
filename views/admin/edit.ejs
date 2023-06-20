@@ -91,18 +91,27 @@
           </ul>
         </div>
         <div class="col-md-9 col-lg-10 content">
+          <form id="deleted" action="/delete" method="post">
+              <input
+                id="items_id"
+                name="items_id"
+                type="hidden"
+                value="<%=items_id %>"
+              />
+            </form>
           <h3><strong>Items List </strong></h3>
           <div class="container">
             <div class="card p-3">
-              <form action="/pinjam" method="post">
+              <form action="/edit" method="post">
                 <div class="mb-3">
                   <label for="item" class="form-label">Items :</label>
                   <input
+                    id="items"
+                    name="items"
                     class="form-control"
                     type="text"
-                    placeholder="<%=items %>"
-                    aria-label="readonly input example"
-                    readonly
+                    placeholder="Item Name"
+                    value="<%=items %>"
                   />
                   <input
                     id="items_id"
@@ -112,61 +121,21 @@
                   />
                 </div>
                 <div class="mb-3">
-                  <label for="users" class="form-label">Users :</label>
-                  <select
-                    id="users"
-                    class="form-select"
-                    name="user_id"
-                    aria-label="Default select example"
-                  >
-                    <option selected disabled>Open this select menu</option>
-                    <% users.forEach((data) => { %>
-
-                    <option value="<%=data.id %>"><%=data.username %></option>
-
-                    <% }); %>
-                  </select>
-                </div>
-                <div class="mb-3">
                   <label for="qty" class="form-label">Quantity :</label>
                   <input
                     type="number"
                     class="form-control"
-                    id="qty"
-                    name="qty"
+                    id="quantity"
+                    name="quantity"
                     placeholder="Input Quantity..."
-                    min="1"
-                    max="<%=quantity%>"
-                  />
-                  <input type="hidden" value="<%=quantity%>" name="quantity" />
-                </div>
-                <div class="mb-3">
-                  <label for="borrow_date" class="form-label"
-                    >Borrow date :</label
-                  >
-                  <input
-                    type="date"
-                    class="form-control"
-                    id="borrow_date"
-                    name="borrow_date"
-                    placeholder="Borrow Date..."
+                    value="<%=quantity %>"
+                    min = "0"
                   />
                 </div>
-                <div class="mb-3">
-                  <label for="return_date" class="form-label"
-                    >Return date :</label
-                  >
-                  <input
-                    type="date"
-                    class="form-control"
-                    id="return_date"
-                    name="return_date"
-                    placeholder="Return Date..."
-                  />
-                </div>
-                <button class="btn btn-primary text-white">Borrow</button>
+                <button class="btn btn-primary text-white">Submit</button>
+                <button form="deleted" class="btn btn-danger text-white">Delete</button>
                 <a href="/items" class="btn btn-outline-light float-end">Cancel</a>
-              </form>
+                </form>
             </div>
           </div>
         </div>
