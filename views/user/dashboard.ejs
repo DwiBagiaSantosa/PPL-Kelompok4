@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>dashboard admin</title>
+    <title>Dashboard User</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/dashboard_admin.css">
 </head>
@@ -21,9 +21,10 @@
                 </li>
                 <li class="nav-item">
                     <div class="logout">
-                        <button type="submit" class="btn custom-btn">
+                        <!-- <button type="submit" class="btn custom-btn">
                             <img src="/images/material-symbols_logout.png" alt="Logo" class="logo">Logout
-                        </button>
+                        </button> -->
+                        <a href="/logout" class="btn custom-btn">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -36,16 +37,13 @@
           <div class="col-md-3 col-lg-2 sidebar">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link" href="#"><img src="/images/Dashboard.png" alt="Logo" class="logo-sidebar">Dashboard</a>
+                <a class="nav-link" href="/dashboard/user"><img src="/images/Dashboard.png" alt="Logo" class="logo-sidebar">Dashboard</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"><img src="/images/Item.png" alt="Logo" class="logo-sidebar">Item</a>
+                <a class="nav-link" href="/history/user"><img src="/images/History.png" alt="Logo" class="logo-sidebar">History</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"><img src="/images/History.png" alt="Logo" class="logo-sidebar">History</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#"><img src="/images/Transaction.png" alt="Logo" class="logo-sidebar">Transaction</a>
+                <a class="nav-link" href="/borrowed/user"><img src="/images/Transaction.png" alt="Logo" class="logo-sidebar">Borrowed</a>
               </li>
             </ul>
           </div>
@@ -56,13 +54,13 @@
                   <div class="col-sm-6">
                     <div class="box bg-custom-box p-4">
                       <p class="text-p"><img src="/images/Items2.png" alt="Logo" class="logo-sidebar">Available Items</p>
-                      <p class="admin-data">20</p>
+                      <p class="admin-data"><%=data%></p>
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="box bg-custom-box p-4">
                       <p class="text-p"><img src="/images/Borrow.png" alt="Logo" class="logo-sidebar">Borrowed Items</p>
-                      <p class="admin-data">5</p>
+                      <p class="admin-data"><%-borrowed%></p>
                     </div>
                   </div>
                 </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>dashboard admin</title>
+    <title>Items</title>
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -45,7 +45,7 @@
         <div class="col-md-3 col-lg-2 sidebar">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link" href="/user"
+              <a class="nav-link" href="/dashboard/admin"
                 ><img
                   src="/images/Dashboard.png"
                   alt="Logo"
@@ -77,7 +77,7 @@
                   src="/images/Transaction.png"
                   alt="Logo"
                   class="logo-sidebar"
-                />Transaction</a
+                />Status</a
               >
             </li>
           </ul>
@@ -85,57 +85,6 @@
         <div class="col-md-9 col-lg-10 content">
           <h3><strong>Items List </strong></h3>
           <div class="container">
-            <!-- <div class="table">
-              <div class="table-row">
-                <div class="table-cell">Items ID</div>
-                <div class="table-cell">Name</div>
-                <div class="table-cell">Quantity</div>
-                <div class="table-cell">Status</div>
-                <div class="table-cell">Action</div>
-              </div>
-              <% dtd.forEach((data) => { %>
-              <form action="/add/cart" method="POST">
-                <div class="table-row">
-                  <div class="table-cell">
-                    <%=data.id%>
-                    <input
-                      id="items_id"
-                      name="items_id"
-                      type="hidden"
-                      value="<%=data.id %>"
-                      style="background-color: white; border: none"
-                    />
-                  </div>
-                  <div class="table-cell">
-                    <%=data.nama%>
-                    <input
-                      id="nama"
-                      name="nama"
-                      type="hidden"
-                      value="<%=data.nama %>"
-                      style="background-color: white; border: none"
-                    />
-                  </div>
-                  <div class="table-cell">
-                    <%=data.quantity%>
-                    <input
-                      id="quantity"
-                      name="quantity"
-                      type="hidden"
-                      value="<%=data.quantity%>"
-                      style="background-color: white; border: none"
-                    />
-                  </div>
-                  <div class="table-cell">
-                    <a class="btn btn-available">Available</a>
-                  </div>
-                  <div class="table-cell">
-                    <button type="submit" class="btn btn-borrow">Borrow</button>
-                  </div>
-                </div>
-              </form>
-              <% }); %>
-            </div> -->
 
             <table class="table table-sm table-borderless custom-table mx-auto">
               <thead>
@@ -185,9 +134,10 @@
                       <a class="btn btn-available">Available</a>
                     </td>
                     <td>
-                      <button type="submit" class="btn btn-borrow">
-                        Borrow
-                      </button>
+                      <!-- <button type="submit" class="btn btn-borrow" > -->
+                        <a href="/pinjaman/<%=data.id %>" class="btn btn-borrow"> borrows</a>
+                        <!-- Borrow -->
+                      <!-- </button> -->
                     </td>
                   </tr>
                 </form>
@@ -196,7 +146,15 @@
             </table>
           </div>
         </div>
+
+        
+
       </div>
+
+      
     </div>
+
+    
   </body>
+  
 </html>

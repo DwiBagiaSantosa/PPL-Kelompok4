@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>dashboard admin</title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/dashboard_admin.css">
 </head>
@@ -37,16 +37,16 @@
           <div class="col-md-3 col-lg-2 sidebar">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a href="/user" class="nav-link" href="#"><img src="/images/Dashboard.png" alt="Logo" class="logo-sidebar">Dashboard</a>
+                <a href="/dashboard/admin" class="nav-link"><img src="/images/Dashboard.png" alt="Logo" class="logo-sidebar">Dashboard</a>
               </li>
               <li class="nav-item">
-                <a href="/items" class="nav-link" href="#"><img src="/images/Item.png" alt="Logo" class="logo-sidebar">Item</a>
+                <a href="/items" class="nav-link"><img src="/images/Item.png" alt="Logo" class="logo-sidebar">Item</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/history"><img src="/images/History.png" alt="Logo" class="logo-sidebar">History</a>
               </li>
               <li class="nav-item">
-                <a href="/transaction" class="nav-link" href="#"><img src="/images/Transaction.png" alt="Logo" class="logo-sidebar">Transaction</a>
+                <a href="/transaction" class="nav-link"><img src="/images/Transaction.png" alt="Logo" class="logo-sidebar">Status</a>
               </li>
             </ul>
           </div>
@@ -57,13 +57,13 @@
                   <div class="col-sm-6">
                     <div class="box bg-custom-box p-4">
                       <p class="text-p"><img src="/images/Items2.png" alt="Logo" class="logo-sidebar">Available Items</p>
-                      <p class="admin-data">20</p>
+                      <p class="admin-data"><%=data%></p>
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="box bg-custom-box p-4">
                       <p class="text-p"><img src="/images/Borrow.png" alt="Logo" class="logo-sidebar">Borrowed Items</p>
-                      <p class="admin-data">5</p>
+                      <p class="admin-data"><%=borrowed%></p>
                     </div>
                   </div>
                 </div>
