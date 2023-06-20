@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2023 at 06:10 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- Generation Time: Jun 20, 2023 at 11:29 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 7.4.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,12 +38,13 @@ CREATE TABLE `items` (
 --
 
 INSERT INTO `items` (`id`, `nama`, `quantity`) VALUES
-(1, 'Ball', 4),
-(2, 'Jersey', 10),
+(1, 'Ball', 0),
+(2, 'Jersey', 7),
 (3, 'Shoes', 4),
-(4, 'Whistle', 4),
+(4, 'Whistle', 9),
 (5, 'Foul Flag', 5),
-(6, 'Scoreboard', 5);
+(6, 'Scoreboard', 5),
+(7, 'Knee Pads', 5);
 
 -- --------------------------------------------------------
 
@@ -84,8 +85,10 @@ INSERT INTO `peminjaman` (`pinjam_id`, `items_id`, `user_id`, `qty`, `borrow_dat
 (16, 5, 1, 5, '2023-06-20', '2023-07-01', 'Returned'),
 (17, 3, 1, 3, '2023-06-20', '2023-06-30', 'Returned'),
 (18, 4, 2, 5, '2023-06-20', '2023-06-30', 'Returned'),
-(19, 2, 2, 5, '2023-06-20', '2023-06-30', 'Borrowed'),
-(20, 4, 2, 5, '2023-06-20', '2023-06-30', 'Borrowed');
+(19, 2, 2, 5, '2023-06-20', '2023-06-30', 'Returned'),
+(20, 4, 2, 5, '2023-06-20', '2023-06-30', 'Returned'),
+(21, 1, 1, 4, '2023-06-01', '2023-06-03', 'Borrowed'),
+(22, 2, 1, 8, '2023-06-21', '2023-06-30', 'Borrowed');
 
 -- --------------------------------------------------------
 
@@ -175,13 +178,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
-  MODIFY `pinjam_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `pinjam_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `transactions`
