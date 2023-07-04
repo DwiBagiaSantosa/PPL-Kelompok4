@@ -1,6 +1,7 @@
 const express = require("express");
 const mysql = require("mysql");
 const session = require("express-session");
+const flash = require("connect-flash");
 
 const port = 3001;
 
@@ -8,7 +9,7 @@ const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
-  database: "ppl",
+  database: "fabbis",
   multipleStatements: true,
 });
 
@@ -28,6 +29,8 @@ app.use(
     saveUninitialized: true,
   })
 );
+
+app.use(flash())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -37,12 +40,17 @@ app.use(express.static("public"));
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-  res.render("login");
+  const test = true;
+  res.render("login", {
+    success: test
+  });
 });
 
 app.post("/auth-mhs", (req, res) => {
   let username = req.body.username;
   let password = req.body.password;
+
+  // const test = true;
 
   if (username && password) {
     connection.query(
@@ -65,7 +73,28 @@ app.post("/auth-mhs", (req, res) => {
             res.redirect("/dashboard/user");
           }
         } else {
-          res.redirect("/");
+          res.send(`
+          <html>
+          <head>
+            <title>Login Failed</title>
+            <style>
+              .alert {
+                padding: 15px;
+                background-color: #f44336;
+                color: white;
+              }
+              .nostyle {
+                text-decoration: none;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="alert">Login Failed. Please <a href="/" class="nostyle">try again</a>.</div>
+          </body>
+          </html>
+        `);
+  
+          // res.redirect("/");
         }
         res.end();
       }
@@ -76,6 +105,21 @@ app.post("/auth-mhs", (req, res) => {
   }
 });
 
+app.get("/register", (req, res) => {
+  res.render("register")
+})
+
+app.post("/account-register", (req, res) => {
+  const data = req.body;
+  const query = `
+  INSERT INTO users (name, username, password, role) VALUES ('${data.name}', '${data.username}', '${data.password}', '0')`
+  connection.query(query, (err) => {
+    if (err) throw err;
+    res.redirect('/');
+  })
+})
+
+
 // USER ENDPOINT
 app.get("/dashboard/user", (req, res) => {
   if (req.session.loggedin) {
@@ -85,6 +129,7 @@ app.get("/dashboard/user", (req, res) => {
     connection.query(q, (err, result) => {
       if (err) throw err;
       // console.log(result)
+      // res.send(req.flash('login'))
       res.render("user/dashboard", {
         borrowed: result[1][0]["borrowed"],
         data: result[0][0]["total"],
@@ -329,7 +374,6 @@ app.get("/pinjaman/:id", (req, res) => {
   }
 });
 
-
 app.post("/pinjam", (req, res) => {
   const data = req.body;
   // console.log(req.params.quantity)
@@ -350,7 +394,7 @@ app.get("/transaction", (req, res) => {
   if (req.session.isadmin) {
     // const userid = req.session.userid;
     connection.query(
-      `SELECT * FROM peminjaman JOIN users on peminjaman.user_id = users.id JOIN items on peminjaman.items_id = items.id where status = 'Borrowed';`,
+      `SELECT * FROM peminjaman JOIN users on peminjaman.user_id = users.id JOIN items on peminjaman.items_id = items.id where status = 'Borrowed' AND role = '0';`,
       (err, results, fields) => {
         if (err) throw err;
         // console.log(results);
@@ -415,7 +459,7 @@ app.post("/return/:id", (req, res) => {
 app.get("/history", (req, res) => {
   if (req.session.isadmin) {
     connection.query(
-      `SELECT * FROM peminjaman JOIN users on peminjaman.user_id = users.id JOIN items on peminjaman.items_id = items.id where status = 'Returned'`,
+      `SELECT * FROM peminjaman JOIN users on peminjaman.user_id = users.id JOIN items on peminjaman.items_id = items.id where status = 'Returned' ORDER BY borrow_date ASC`,
       (err, results, fields) => {
         if (err) throw err;
         // console.log(results);
@@ -454,6 +498,47 @@ app.get("/history", (req, res) => {
     );
   }
 });
+
+app.get("/account", (req, res) => {
+  if (req.session.isadmin) {
+    // console.log(req.session.userid);
+    connection.query("SELECT id, name, username FROM users WHERE role = 0", (err, results) => {
+      if (err) throw err;
+      res.render("admin/accountlist", {
+        dtd: results,
+        state: true,
+      });
+    });
+  } else {
+    res.redirect("/");
+  }
+})
+
+app.get("/edit/account/:id", (req, res) => {
+  const q = `
+  SELECT * FROM users WHERE id= ${req.params.id}`;
+  if (req.session.isadmin) {
+    connection.query(q, (err, results, fields) => {
+      if (err) throw err;
+      // console.log(results);
+      res.render("admin/editaccount", {
+        data: results
+      });
+    });
+  }
+});
+
+app.post("/edit/account", (req,res) =>{
+  const data = req.body;
+  const query = `
+  UPDATE users SET name = '${data.name}', username = '${data.username}', password = '${data.password}' WHERE id = '${data.id}'`
+  if (req.session.isadmin) {
+    connection.query(query, (err) => {
+      if (err) throw err;
+      res.redirect("/account");
+    });
+  }
+})
 
 app.get("/logout", (req, res) => {
   req.session.destroy();

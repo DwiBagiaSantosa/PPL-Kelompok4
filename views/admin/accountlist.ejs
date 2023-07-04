@@ -88,23 +88,20 @@
               >
             </li>
             <li class="nav-item">
-              <a href="/account" class="nav-link"><img src="/images/account.png" alt="Logo" class="logo-sidebar">Accounts</a>
-            </li>
+                <a href="/account" class="nav-link"><img src="/images/account.png" alt="Logo" class="logo-sidebar">Accounts</a>
+              </li>
           </ul>
         </div>
         <div class="col-md-9 col-lg-10 content">
-          <h3><strong>Items List </strong></h3>
+          <h3><strong>Account List </strong></h3>
           <div class="container">
-            <a href="/additems" class="btn btn-outline-primary float-right mb-2">
-              + Add Items
-            </a>
+            
             <table class="table table-sm table-borderless custom-table mx-auto">
               <thead>
                 <tr>
-                  <th scope="col">Items ID</th>
+                  <th scope="col">ID</th>
                   <th scope="col">Name</th>
-                  <th scope="col">Quantity</th>
-                  <th scope="col">Status</th>
+                  <th scope="col">NIM</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
@@ -112,52 +109,38 @@
               <tbody>
                 <form>
                   <tr>
-                    <th scope="row">
-                      <%=data.id %>
-                      <div
-                        id="items_id"
-                        name="items_id"
-                        type="hidden"
-                        value="<%=data.id %>"
-                        style="background-color: white; border: none"
-                      />
-                    </th>
-                    <td>
-                      <%=data.nama %>
-                      <div
-                        id="nama"
-                        name="nama"
-                        type="hidden"
-                        value="<%=data.nama %>"
-                        style="background-color: white; border: none"
-                      />
+                    <td scope="row">
+                        <%=data.id %>
+                        <div
+                          id="id"
+                          name="id"
+                          type="hidden"
+                          value="<%=data.id %>"
+                          style="background-color: white; border: none"
+                        />
                     </td>
-                    <td>
-                      <%=data.quantity%>
+                    <td scope="row">
+                      <%=data.name %>
                       <div
-                        id="quantity"
-                        name="quantity"
+                        id="name"
+                        name="name"
                         type="hidden"
-                        value="<%=data.quantity%>"
+                        value="<%=data.name %>"
                         style="background-color: white; border: none"
                       />
                     </td>
                     <td>
-                      <%if (data.quantity > 0) { %>
-                        <a class="btn btn-available">Available</a>
-                      <% } else {%>
-                        <a class="btn btn-unavailable">Unavailable</a>
-                      <% } %>
+                      <%=data.username %>
+                      <div
+                        id="username"
+                        name="username"
+                        type="hidden"
+                        value="<%=data.username %>"
+                        style="background-color: white; border: none"
+                      />
                     </td>
                     <td>
-                      <!-- <button type="submit" class="btn btn-borrow" > -->
-                        <%if (data.quantity > 0) { %>
-                          <a href="/pinjaman/<%=data.id %>" class="btn btn-borrow"> Borrows </a>
-                        <% } else {%>
-                          <a onclick="showAlert()" href="/items" class="btn btn-borrow"> Borrows </a>
-                        <% } %>
-                      
-                      <a href="/edit/<%=data.id %>" class="btn btn-available" > Edit </a>
+                      <a href="/edit/account/<%=data.id %>" class="btn btn-available" > Edit </a>
                       <!-- Borrow -->
                       <!-- </button> -->
                     </td>
@@ -170,10 +153,5 @@
         </div>
       </div>
     </div>
-    <script>
-      function showAlert() {
-        alert("The Item is Unavailable");
-      }
-    </script>
   </body>
 </html>

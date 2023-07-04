@@ -91,67 +91,74 @@
           </ul>
         </div>
         <div class="col-md-9 col-lg-10 content">
-          <form id="deleted" action="/delete" method="post">
-              <input
-                id="items_id"
-                name="items_id"
-                type="hidden"
-                value="<%=items_id %>"
-              />
-            </form>
+          
           <h3><strong>Items List </strong></h3>
           <div class="container">
             <div class="card p-3">
-              <form action="/edit" method="post">
+              <form action="/edit/account" method="post">
+                <% data.forEach((dtd) => { %>
                 <div class="mb-3">
-                  <label for="item" class="form-label">Items :</label>
+                  <label for="item" class="form-label">ID :</label>
                   <input
-                    id="items"
-                    name="items"
+                    id="id"
+                    name="id"
                     class="form-control"
                     type="text"
                     placeholder="Item Name"
-                    value="<%=items %>"
+                    value="<%=dtd.id %>"
+                    disabled
                   />
                   <input
-                    id="items_id"
-                    name="items_id"
+                    id="id"
+                    name="id"
+                    class="form-control"
                     type="hidden"
-                    value="<%=items_id %>"
+                    placeholder="Item Name"
+                    value="<%=dtd.id %>"
                   />
                 </div>
                 <div class="mb-3">
-                  <label for="qty" class="form-label">Quantity :</label>
+                  <label for="qty" class="form-label">Name :</label>
                   <input
-                    type="number"
+                    type="text"
                     class="form-control"
-                    id="quantity"
-                    name="quantity"
-                    placeholder="Input Quantity..."
-                    value="<%=quantity %>"
-                    min = "0"
+                    id="name"
+                    name="name"
+                    placeholder="Input Your Name"
+                    value="<%=dtd.name %>"
                   />
                 </div>
+                <div class="mb-3">
+                    <label for="item" class="form-label">NIM :</label>
+                    <input
+                      id="username"
+                      name="username"
+                      class="form-control"
+                      type="text"
+                      placeholder="Input Your NIM"
+                      value="<%=dtd.username %>"
+                    />
+                </div>
+                <div class="mb-3">
+                    <label for="item" class="form-label">Password :</label>
+                    <input
+                      id="password"
+                      name="password"
+                      class="form-control"
+                      type="text"
+                      value="<%=dtd.password %>"
+                    />
+                </div>
+                <% }); %>
                 <button class="btn btn-primary text-white">Submit</button>
-                <button onclick="confirmDelete()" form="deleted" class="btn btn-danger text-white">Delete</button>
-                <a href="/items" class="btn btn-outline-light float-end">Cancel</a>
+                <button form="deleted" class="btn btn-danger text-white">Delete</button>
+                <a href="/account" class="btn btn-outline-light float-end">Cancel</a>
                 </form>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <script>
-      function confirmDelete() {
-        var confirmed = window.confirm('Are you sure you want to delete the data?');
-        if (confirmed) {
-          // Perform the deletion action here
-          // You can make an AJAX request or perform any other necessary operation
-          // For this example, let's just log a message to the console
-          console.log('Data deleted successfully!');
-        }
-      }
-    </script>
 
     <!-- Bootstrap JS -->
     <script

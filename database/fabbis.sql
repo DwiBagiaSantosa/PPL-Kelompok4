@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2023 at 11:29 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 7.4.20
+-- Generation Time: Jul 04, 2023 at 05:41 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,13 +38,12 @@ CREATE TABLE `items` (
 --
 
 INSERT INTO `items` (`id`, `nama`, `quantity`) VALUES
-(1, 'Ball', 0),
-(2, 'Jersey', 7),
+(1, 'Ball', 44),
+(2, 'Jersey', 15),
 (3, 'Shoes', 4),
-(4, 'Whistle', 9),
+(4, 'Whistle', 5),
 (5, 'Foul Flag', 5),
-(6, 'Scoreboard', 5),
-(7, 'Knee Pads', 5);
+(6, 'Scoreboard', 5);
 
 -- --------------------------------------------------------
 
@@ -67,8 +66,6 @@ CREATE TABLE `peminjaman` (
 --
 
 INSERT INTO `peminjaman` (`pinjam_id`, `items_id`, `user_id`, `qty`, `borrow_date`, `return_date`, `status`) VALUES
-(1, 4, 1, 4, '2023-06-22', '2023-06-22', 'Returned'),
-(2, 2, 2, 10, '2023-06-21', '2023-06-30', 'Returned'),
 (3, 1, 1, 4, '2023-06-19', '2023-06-23', 'Returned'),
 (4, 3, 2, 12, '2023-06-19', '2023-06-13', 'Returned'),
 (5, 2, 2, 5, '2023-06-20', '2023-06-29', 'Returned'),
@@ -88,7 +85,15 @@ INSERT INTO `peminjaman` (`pinjam_id`, `items_id`, `user_id`, `qty`, `borrow_dat
 (19, 2, 2, 5, '2023-06-20', '2023-06-30', 'Returned'),
 (20, 4, 2, 5, '2023-06-20', '2023-06-30', 'Returned'),
 (21, 1, 1, 4, '2023-06-01', '2023-06-03', 'Borrowed'),
-(22, 2, 1, 8, '2023-06-21', '2023-06-30', 'Borrowed');
+(27, 1, 1, 4, '2023-06-23', '2023-06-22', 'Returned'),
+(28, 1, 15, 4, '2023-06-21', '2023-06-22', 'Returned'),
+(29, 8, 15, 5, '2023-06-21', '2023-06-22', 'Returned'),
+(30, 4, 2, 5, '2023-06-29', '2023-06-30', 'Borrowed'),
+(31, 4, 1, 4, '2023-07-03', '2023-07-04', 'Borrowed'),
+(32, 1, 0, 10, '2023-07-04', '2023-07-05', 'Borrowed'),
+(33, 13, 0, 10, '2023-07-04', '2023-07-05', 'Borrowed'),
+(34, 6, 0, 0, '2023-07-04', '2023-07-05', 'Borrowed'),
+(35, 1, 3, 10, '2023-07-04', '2023-07-13', 'Returned');
 
 -- --------------------------------------------------------
 
@@ -125,6 +130,7 @@ INSERT INTO `transactions` (`transaction_id`, `user_id`, `items_id`, `qty`, `dat
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `role` tinyint(4) NOT NULL DEFAULT 0
@@ -134,10 +140,13 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `role`) VALUES
-(1, '1207050030', 'test123', 0),
-(2, '1207050044', 'test123', 0),
-(3, 'admin', 'admin', 1);
+INSERT INTO `users` (`id`, `name`, `username`, `password`, `role`) VALUES
+(0, 'admin', 'admin', 'admin', 1),
+(2, 'Dwi Bagia Santosa', '1207050030', 'test123', 0),
+(3, 'Fatih Fauzan', '1207050037', 'test123', 0),
+(4, 'Jessy Fauziah', '1207050137', 'test123', 0),
+(5, 'Frinadi Syauqi', '1207050041', 'test123', 0),
+(6, 'Dani Ali Kinan', '1207050139', 'test123', 0);
 
 --
 -- Indexes for dumped tables
@@ -178,36 +187,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
-  MODIFY `pinjam_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
-
---
--- AUTO_INCREMENT for table `transactions`
---
-ALTER TABLE `transactions`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `pinjam_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `transactions`
---
-ALTER TABLE `transactions`
-  ADD CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `transactions_ibfk_2` FOREIGN KEY (`items_id`) REFERENCES `items` (`id`);
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

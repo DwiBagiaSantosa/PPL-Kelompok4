@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Items</title>
+    <title>Borrow</title>
     <!-- <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -91,7 +91,7 @@
           </ul>
         </div>
         <div class="col-md-9 col-lg-10 content">
-          <h3><strong>Items List </strong></h3>
+          <h3><strong>Borrow</strong></h3>
           <div class="container">
             <div class="card p-3">
               <form action="/pinjam" method="post">
@@ -118,11 +118,12 @@
                     class="form-select"
                     name="user_id"
                     aria-label="Default select example"
+                    
                   >
                     <option selected disabled>Open this select menu</option>
                     <% users.forEach((data) => { %>
 
-                    <option value="<%=data.id %>"><%=data.username %></option>
+                    <option value="<%=data.id %>" required><%=data.username %></option>
 
                     <% }); %>
                   </select>
@@ -137,6 +138,7 @@
                     placeholder="Input Quantity..."
                     min="1"
                     max="<%=quantity%>"
+                    required
                   />
                   <input type="hidden" value="<%=quantity%>" name="quantity" />
                 </div>
