@@ -25,6 +25,7 @@ const app = express();
 app.use(
   session({
     secret: "secret",
+    loggedin: false,
     resave: true,
     saveUninitialized: true,
   })
@@ -40,10 +41,17 @@ app.use(express.static("public"));
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
+  req.session.register = false;
   const test = true;
-  res.render("login", {
-    success: test
-  });
+  if (req.session.isadmin) {
+    res.redirect("/dashboard/admin")
+  } else if (req.session.loggedin) {
+    res.redirect("/dashboard/user")
+  } else {
+    res.render("login", {
+      success: test
+    });
+  }
 });
 
 app.post("/auth-mhs", (req, res) => {
@@ -106,7 +114,8 @@ app.post("/auth-mhs", (req, res) => {
 });
 
 app.get("/register", (req, res) => {
-  res.render("register")
+  session_reg = req.session.register;
+  res.render("register", {session_reg})
 })
 
 app.post("/account-register", (req, res) => {
@@ -115,7 +124,9 @@ app.post("/account-register", (req, res) => {
   INSERT INTO users (name, username, password, role) VALUES ('${data.name}', '${data.username}', '${data.password}', '0')`
   connection.query(query, (err) => {
     if (err) throw err;
-    res.redirect('/');
+    req.session.register = true;
+    session_reg = req.session.register;
+    res.render('register', {session_reg});
   })
 })
 
